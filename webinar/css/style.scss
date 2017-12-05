@@ -1,0 +1,427 @@
+@import "reset";
+
+
+$color-1: hsl(330, 51%, 40%);
+$color-2: hsl(330, 24%, 20%);
+$color-3: hsl(330, 24%, 10%);
+$color-4: hsl(37, 33%, 92%);
+$color-5: hsl(330, 15%, 45%);
+$color-6: hsl(330, 5%, 15%);
+$color-7: hsl(330, 0%, 40%);
+
+
+$form-shift-down: 22px;
+
+
+@mixin f-roboto-400 {
+	font-family: 'Roboto', sans-serif;
+	font-weight: 400;
+}
+
+@mixin f-roboto-700 {
+	font-family: 'Roboto', sans-serif;
+	font-weight: 700;
+}
+
+@mixin f-pacifico-400 {
+	font-family: 'Pacifico', cursive;
+	font-weight: 400;
+}
+
+@mixin clearfix {
+	&:before, &:after {
+		display: table;
+    	content: " ";
+	}
+	&:after {
+		clear: both;
+	}
+}
+
+* {
+	margin: 0;
+	border: 0;
+	padding: 0;
+	border-radius: 0;
+}
+
+body {
+	@include f-roboto-400;
+	font-size: 14px;
+	color: $color-2;
+	overflow-x: hidden;
+	background-color: $color-4;
+	line-height: 1.3;
+	word-break: break-word;
+}
+
+input, textarea, button {
+	font: inherit;
+	color: inherit;
+	outline: 0;
+	margin: 0;
+	border: 0;
+	padding: 0;
+	background-color: transparent;
+}
+
+button {
+	cursor: pointer;
+}
+
+.clearfix {
+	@include clearfix;
+}
+
+.brand {
+	@include f-pacifico-400;
+}
+
+
+.container-1 {
+	max-width: 560px;
+	margin: 0 auto;
+	display: block;
+}
+
+.container-2 {
+	max-width: 900px;
+	margin: 0 auto;
+	display: block;
+}
+
+body > * {
+	box-shadow: rgba($color-3, 0.3) 0px 5px 50px;
+	background-color: $color-4;
+	position: relative;
+	padding: {
+		left: 10px;
+		right: 10px;
+	}
+}
+
+.b1 {
+
+	text-shadow: rgba($color-3,1) 0 0 10px;
+
+	padding-top: 1em;
+
+	color: $color-4;
+	z-index: 20;
+
+	background: {
+		image: url(../img/bg1.jpg);
+		repeat: no-repeat;
+		position: center;
+		size: cover;
+	}
+
+	.brand {
+		font-size: 24px;
+		text-align: center;
+	}
+
+	.name {
+		font-size: 34px;
+		text-align: center;
+		padding: 1em 0;
+	}
+
+	.yt {
+		position: relative;
+		margin: {
+			left: -10px;
+			right: -10px;
+		}
+		> img {
+			width: 100%;
+			opacity: 0;
+			display: block;
+		}
+		> iframe {
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			left: 0; top: 0;
+		}
+	}
+
+	.form-area {
+		text-shadow: none;
+		box-shadow: rgba($color-3, 0.3) 0px 5px 50px;
+		background-color: $color-4;
+		position: relative;
+		top: $form-shift-down;
+		padding: {
+			left: 10px;
+			right: 10px;
+		}
+
+		.head-1 {
+			color: $color-1;
+			text-align: center;
+			font-size: 22px;
+			margin-top: 45px;
+			margin-bottom: 10px;
+		}
+
+		.head-2 {
+			color: $color-2;
+			text-align: center;
+			font-size: 12px;
+			margin-top: 10px;
+			margin-bottom: 45px;
+		}
+	}
+
+	form {
+		color: $color-2;
+		> * {
+			max-width: 400px;
+			margin: 45px auto;
+		}
+
+		input, button {
+			font-size: 22px;
+		}
+
+		input {
+			display: block;
+			width: 100%;
+			box-sizing: border-box;
+			border-bottom: 1px solid $color-2;
+			padding: 0 10px;
+		}
+		
+		button {
+			background-color: $color-1;
+			color: $color-4;
+			padding: 10px;
+			width: 100%;
+
+			&:hover, &:focus {
+				background-color: lighten($color-1, 10%);
+			}
+		}
+	}
+}
+
+.b2 {
+	padding-top: ($form-shift-down+50px);
+	padding-bottom: ($form-shift-down+50px);
+	z-index: 19;
+	.head-1 {
+		text-align: center;
+		font-size: 33px;
+		margin-bottom: 30px;
+		color: $color-6;
+	}
+	ul.carousel {
+		> li {
+			margin-bottom: 45px;
+
+			.head-item {
+				@include f-pacifico-400;
+				font-size: 22px;
+				text-align: center;
+				margin-bottom: 10px;
+			}
+
+			.img-wrap {
+				height: 120px;
+				max-width: 350px;
+				margin: 10px auto;
+				background: {
+					repeat: no-repeat;
+					position: center;
+					size: cover;
+				}
+				box-shadow: rgba($color-3, 0.3) 0px 5px 50px;
+			}
+			&:nth-child(1) {
+				.img-wrap {
+					background-image: url(../img/b2-c1.jpg);
+				}
+			}
+			&:nth-child(2) {
+				.img-wrap {
+					background-image: url(../img/b2-c2.jpg);
+				}
+			}
+			&:nth-child(3) {
+				.img-wrap {
+					background-image: url(../img/b2-c3.jpg);
+				}
+			}
+
+			.content-item {
+				max-width: 350px;
+				margin: 10px auto;
+				color: $color-7;
+			}
+		}
+	}
+}
+
+.b3 {
+	padding-top: ($form-shift-down+50px);
+	padding-bottom: (2*$form-shift-down+50px);
+	z-index: 18;
+	.head-1 {
+		text-align: center;
+		font-size: 33px;
+		margin-bottom: 30px;
+		color: $color-6;
+	}
+	ul.carousel {
+		> li {
+			margin-bottom: 45px;
+
+			.img-wrap {
+				height: 120px;
+				max-width: 350px;
+				margin: 10px auto;
+				background: {
+					repeat: no-repeat;
+					position: center;
+					size: cover;
+				}
+				box-shadow: rgba($color-3, 0.3) 0px 5px 50px;
+			}
+			&:nth-child(1) {
+				.img-wrap {
+					background-image: url(../img/b3-c1.jpg);
+					background-position-y: 30%;
+				}
+			}
+			&:nth-child(2) {
+				.img-wrap {
+					background-image: url(../img/b3-c2.jpg);
+					background-position-y: 10%;
+				}
+			}
+			&:nth-child(3) {
+				.img-wrap {
+					background-image: url(../img/b3-c3.jpg);
+					background-position-y: 45%;
+				}
+			}
+
+			.content-item {
+				max-width: 350px;
+				margin: 10px auto;
+				color: $color-7;
+			}
+		}
+	}
+}
+
+.b4 {
+	z-index: 18;
+	box-shadow: none;
+	background-color: transparent;
+	margin-bottom: 45px;
+
+	> .container-2 {
+		position: relative;
+		top: -$form-shift-down;
+		background-color: $color-4;
+		box-shadow: rgba($color-3, 0.3) 0px 5px 50px;
+
+		padding: {
+			top: 45px;
+			bottom: 45px;
+		}
+
+		padding: {
+			left: 10px;
+			right: 10px;
+		}
+	}
+
+	.head-1 {
+		color: $color-1;
+		text-align: center;
+		font-size: 33px;
+		margin-top: 45px;
+		margin-bottom: 10px;
+	}
+
+
+	form {
+		color: $color-2;
+		> * {
+			max-width: 400px;
+			margin: 45px auto;
+		}
+
+		input, button {
+			font-size: 22px;
+		}
+
+		input {
+			display: block;
+			width: 100%;
+			box-sizing: border-box;
+			border-bottom: 1px solid $color-2;
+			padding: 0 10px;
+		}
+		
+		button {
+			background-color: $color-1;
+			color: $color-4;
+			padding: 10px;
+			width: 100%;
+
+			&:hover, &:focus {
+				background-color: lighten($color-1, 10%);
+			}
+		}
+	}
+
+}
+
+@media (min-width: 768px) {
+	.b2 {
+		ul.carousel {
+			> li {
+				width: (100%/3);
+				float: left;
+				box-sizing: border-box;
+				padding: 0 10px;
+				.img-wrap {
+					width: 100%;
+					height: 120px;
+					max-width: none;
+				}
+				&:first-child {
+					padding-left: 0;
+				}
+				&:last-child {
+					padding-right: 0;
+				}
+			}
+		}
+	}
+	.b3 {
+		ul.carousel {
+			> li {
+				width: (100%/3);
+				float: left;
+				box-sizing: border-box;
+				padding: 0 10px;
+				.img-wrap {
+					width: 100%;
+					height: 120px;
+					max-width: none;
+				}
+				&:first-child {
+					padding-left: 0;
+				}
+				&:last-child {
+					padding-right: 0;
+				}
+			}
+		}
+	}
+}

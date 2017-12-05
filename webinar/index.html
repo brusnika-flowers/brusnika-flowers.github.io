@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+	<meta charset="utf-8">
+	<title>BRUSNIKA</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Pacifico|Roboto:400,700&amp;subset=cyrillic">
+	<link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+	<div class="b1">
+		<div style="font-size: 16px; text-align: center;">Студия рукодельной флористики</div>
+		<div class="brand">Brusnika</div>
+		<div class="name">"Handmade цветы для начинающих"
+			<br>Бесплатный вебинар</div>
+		<div class="container-1">
+			<time style="font-size: 26px;font-weight: 700;text-align: right;display: block;" datetime="2017-12-07T19:30:00+03:00">7 декабря в 19:30</time>
+			<div class="form-area clearfix">
+				<div class="yt">
+					<img src="img/16x9.png">
+					<iframe src="https://www.youtube.com/embed/cpF1Wjh5JU0?controls=1&amp;autoplay=0&amp;loop=0&amp;showinfo=1" allowfullscreen=""
+					 frameborder="0" width="100%" height="100%"></iframe>
+				</div>
+				<div class="head-1">
+					Получить приглашение
+				</div>
+				<div class="head-2">
+					Заполните форму и получите приглашение на вебинар
+				</div>
+				<form action="" accept-charset="utf-8" method="post">
+					<div>
+						<input required="" type="text" placeholder="Имя" name="name" autocomplete="off">
+					</div>
+					<div>
+						<input required="" type="email" placeholder="Email" name="email" autocomplete="off">
+					</div>
+					<div>
+						<button type="submit">Получить приглашение</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	<div class="b2">
+		<div class="container-2">
+			<div class="head-1">Вы узнаете...</div>
+			<ul class="carousel clearfix">
+				<li>
+					<div class="head-item">Как зарабатывать на любимом деле</div>
+					<div class="img-wrap"></div>
+					<div class="content-item">Как превратить хобби в бизнес и не стесняться продавать свои работы?</div>
+				</li>
+				<li>
+					<div class="head-item">7 критических ошибок начинающих мастеров</div>
+					<div class="img-wrap"></div>
+					<div class="content-item">Какие ошибки мешают Вам развиваться и делать реалистичные композиции?</div>
+				</li>
+				<li>
+					<div class="head-item">Что такое фоамиран и его волшебные свойства</div>
+					<div class="img-wrap"></div>
+					<div class="content-item">Почему мы влюблены в этот материал? Что в нем необычного? Как правильно выбирать фоамиран и не выбросить деньги на ветер?</div>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<div class="b3">
+		<div class="container-2">
+			<div class="head-1">Отзывы наших учеников</div>
+			<ul class="carousel clearfix">
+				<li>
+					<div class="img-wrap"></div>
+					<div class="content-item">«Наконец-то хорошо отдохнула от работы и дня сурка! Мы с девочками в творческой атмосфере общались, болтали и создали
+						крутые цветочки. Теперь я делаю цветочные повязки для дочурки! Спасибо!»&nbsp;—&nbsp;Татьяна</div>
+				</li>
+				<li>
+					<div class="img-wrap"></div>
+					<div class="content-item">«Всегда думала, что у меня руки не из нужного места растут, а оказалось, что все просто и понятно. Сделала чудесную
+						новогоднюю игрушку, благодаря Екатерине! Повешу на ёлку.»&nbsp;—&nbsp;Ольга</div>
+				</li>
+				<li>
+					<div class="img-wrap"></div>
+					<div class="content-item">«Я сделала розы по Вашему уроку в подарок коллегам и у меня заказали еще несколько композиций! Узнала как зарабатывать
+						на творчестве и любимом хобби! Спасибо!»&nbsp;—&nbsp;Анна</div>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<div class="b4">
+		<div class="container-2">
+			<div class="head-1">Не забудьте зарегистрироваться</div>
+			<form action="" accept-charset="utf-8" method="post">
+				<div>
+					<input required="" type="text" placeholder="Имя" name="name" autocomplete="off">
+				</div>
+				<div>
+					<input required="" type="email" placeholder="Email" name="email" autocomplete="off">
+				</div>
+				<div>
+					<button type="submit">Получить приглашение</button>
+				</div>
+			</form>
+		</div>
+	</div>
+	<script>
+		window.onload = function () {
+			var img = new Image();
+			img.onload = function () {
+				this.onload = null;
+				document.getElementsByClassName('b1')[0].style.backgroundImage = 'url(' + JSON.stringify(this.src) + ')';
+			};
+			img.src = 'img/bg1-full.jpg';
+			img = undefined;
+		};
+	</script>
+</body>
+
+</html>
