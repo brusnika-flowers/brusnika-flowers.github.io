@@ -2,14 +2,17 @@
 <html lang="ru">
 
 <head>
-	<meta charset="utf-8">
-	<title>BRUSNIKA</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>Вебинар | BRUSNIKA</title>
+	<meta name="description" content="Бесплатный вебинар от студии флористика BRUSNIKA">
+	<meta name="keywords" content="brusnika, handmade, ручная работа, вебинар, бесплатный вебинар, флористика, фоамиран, цветочки">
+	<meta name="robots" content="noindex">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Pacifico|Roboto:400,700&amp;subset=cyrillic">
 	<link rel="stylesheet" href="css/style.css">
 </head>
 
-<body>
+<body ng-app="App" ng-class="state.class" class="ng-cloak">
 	<div class="b1">
 		<div style="font-size: 16px; text-align: center;">Студия рукодельной флористики</div>
 		<div class="brand">Brusnika</div>
@@ -29,12 +32,12 @@
 				<div class="head-2">
 					Заполните форму и получите приглашение на вебинар
 				</div>
-				<form action="" accept-charset="utf-8" method="post">
+				<form name="RegForm1" ng-submit="reg(RegForm1)">
 					<div>
-						<input required="" type="text" placeholder="Имя" name="name" autocomplete="off">
+						<input required="" type="text" placeholder="Имя" name="name" autocomplete="off" ng-model="form.name">
 					</div>
 					<div>
-						<input required="" type="email" placeholder="Email" name="email" autocomplete="off">
+						<input required="" type="email" placeholder="Email" name="email" autocomplete="off" ng-model="form.email">
 					</div>
 					<div>
 						<button type="submit">Получить приглашение</button>
@@ -90,18 +93,21 @@
 	<div class="b4">
 		<div class="container-2">
 			<div class="head-1">Не забудьте зарегистрироваться</div>
-			<form action="" accept-charset="utf-8" method="post">
+			<form name="RegForm2" ng-submit="reg(RegForm2)">
 				<div>
-					<input required="" type="text" placeholder="Имя" name="name" autocomplete="off">
+					<input required="" type="text" placeholder="Имя" name="name" autocomplete="off" ng-model="form.name">
 				</div>
 				<div>
-					<input required="" type="email" placeholder="Email" name="email" autocomplete="off">
+					<input required="" type="email" placeholder="Email" name="email" autocomplete="off" ng-model="form.email">
 				</div>
 				<div>
 					<button type="submit">Получить приглашение</button>
 				</div>
 			</form>
 		</div>
+	</div>
+	<div class="b5">
+		Спасибо!
 	</div>
 	<script>
 		window.onload = function () {
@@ -113,6 +119,41 @@
 			img.src = 'img/bg1-full.jpg';
 			img = undefined;
 		};
+	</script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+	<script>
+		angular.module('App', [])
+			.config(['$locationProvider', function ($locationProvider) {
+				$locationProvider.hashPrefix('');
+			}])
+			.run(['$rootScope', '$http', '$location', function ($rootScope, $http, $location) {
+				$rootScope.form = {};
+
+				var routes = {
+					'/': { class: 'home' },
+					'/thankyou': { class: 'thank-you' }
+				};
+
+				$rootScope.$on('$locationChangeSuccess', function () {
+					var
+						url = $location.url(),
+						state = routes[url];
+					if (state == null) {
+						state = { class: 'not-found' };
+						$location.url('/');
+					}
+					$rootScope.state = state;
+				});
+
+				$rootScope.reg = function (form) {
+					if (!(form && form.$valid)) return;
+					$http.get('http://1reggetresponsecom_1.gr8.com', { params: $rootScope.form }).finally(toThankYou);
+				}
+
+				function toThankYou() {
+					$location.url('/thankyou');
+				}
+			}]);
 	</script>
 </body>
 
