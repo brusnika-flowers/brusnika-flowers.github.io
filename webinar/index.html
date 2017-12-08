@@ -1,21 +1,25 @@
 <!DOCTYPE html>
 <html lang="ru">
-
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<title>Вебинар | BRUSNIKA</title>
-	<meta name="description" content="Бесплатный вебинар от студии флористики BRUSNIKA">
-	<meta name="keywords" content="brusnika, handmade, ручная работа, вебинар, бесплатный вебинар, флористика, фоамиран, цветочки">
-	<meta name="robots" content="noindex">
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Pacifico|Roboto:400,700&amp;subset=cyrillic">
-	<link rel="stylesheet" href="css/style.css">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Вебинар | BRUSNIKA</title>
+<meta name="description" content="Бесплатный вебинар от студии флористики BRUSNIKA">
+<meta name="keywords" content="brusnika, handmade, ручная работа, вебинар, бесплатный вебинар, флористика, фоамиран, цветочки, хобби">
+<meta name="robots" content="noindex">
+<meta property="og:title" content="Вебинар | BRUSNIKA">
+<meta property="og:description" content="Бесплатный вебинар от студии флористики BRUSNIKA">
+<meta property="og:url" content="http://brusnika-flowers.ru/webinar/?utm_source=og">
+<meta property="og:image" content="https://multimedia.getresponse.com/getresponse-SQq9z/photos/489380006.jpg">
+<meta property="og:type" content="website">
+<link rel="shortcut icon" href="https://multimedia.getresponse.com/getresponse-SQq9z/photos/490379106.png">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Pacifico|Roboto:400,700&amp;subset=cyrillic">
+<link rel="stylesheet" href="css/style.css">
 </head>
-
 <body ng-app="App" ng-class="state.class" class="ng-cloak">
 	<div class="b1">
 		<div style="font-size: 16px; text-align: center;">Студия рукодельной флористики</div>
-		<div class="brand">Brusnika</div>
+		<div class="brand"><span>B</span>rusnika</div>
 		<div class="name">"Handmade цветы для начинающих"
 			<br>Бесплатный вебинар</div>
 		<div class="container-1">
@@ -50,10 +54,11 @@
 		<div class="container-2">
 			<div class="head-1">Вы узнаете...</div>
 			<ul class="carousel clearfix">
+				
 				<li>
-					<div class="head-item">Как зарабатывать на любимом деле</div>
+					<div class="head-item">Что такое фоамиран и его волшебные свойства</div>
 					<div class="img-wrap"></div>
-					<div class="content-item">Как превратить хобби в бизнес и не стесняться продавать свои работы?</div>
+					<div class="content-item">Почему мы влюблены в этот материал? Что в нем необычного? Как правильно выбирать фоамиран и не выбросить деньги на ветер?</div>
 				</li>
 				<li>
 					<div class="head-item">7 критических ошибок начинающих мастеров</div>
@@ -61,9 +66,9 @@
 					<div class="content-item">Какие ошибки мешают Вам развиваться и делать реалистичные композиции?</div>
 				</li>
 				<li>
-					<div class="head-item">Что такое фоамиран и его волшебные свойства</div>
+					<div class="head-item">Как зарабатывать на любимом деле</div>
 					<div class="img-wrap"></div>
-					<div class="content-item">Почему мы влюблены в этот материал? Что в нем необычного? Как правильно выбирать фоамиран и не выбросить деньги на ветер?</div>
+					<div class="content-item">Как превратить хобби в бизнес и не стесняться продавать свои работы?</div>
 				</li>
 			</ul>
 		</div>
@@ -110,51 +115,46 @@
 		Спасибо!
 	</div>
 	<script>
-		window.onload = function () {
-			var img = new Image();
-			img.onload = function () {
-				this.onload = null;
-				document.getElementsByClassName('b1')[0].style.backgroundImage = 'url(' + JSON.stringify(this.src) + ')';
-			};
-			img.src = 'img/bg1-full.jpg';
-			img = undefined;
-		};
+window.onload = function () {
+	var img = new Image();
+	img.onload = function () {
+		this.onload = null;
+		document.getElementsByClassName('b1')[0].style.backgroundImage = 'url(' + JSON.stringify(this.src) + ')';
+	};
+	img.src = 'https://multimedia.getresponse.com/getresponse-SQq9z/photos/489380006.jpg';
+	img = undefined;
+};
 	</script>
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
 	<script>
-		angular.module('App', [])
-			.config(['$locationProvider', function ($locationProvider) {
-				$locationProvider.hashPrefix('');
-			}])
-			.run(['$rootScope', '$http', '$location', function ($rootScope, $http, $location) {
-				$rootScope.form = {};
-
-				var routes = {
-					'/': { class: 'home' },
-					'/thankyou': { class: 'thank-you' }
-				};
-
-				$rootScope.$on('$locationChangeSuccess', function () {
-					var
-						url = $location.url(),
-						state = routes[url];
-					if (state == null) {
-						state = { class: 'not-found' };
-						$location.url('/');
-					}
-					$rootScope.state = state;
-				});
-
-				$rootScope.reg = function (form) {
-					if (!(form && form.$valid)) return;
-					$http.get('http://webinar-brusnika.gr8.com/', { params: $rootScope.form }).finally(toThankYou);
-				}
-
-				function toThankYou() {
-					$location.url('/thankyou');
-				}
-			}]);
+angular.module('App', [])
+.config(['$locationProvider', function ($locationProvider) {
+	$locationProvider.hashPrefix('');
+}])
+.run(['$rootScope', '$http', '$location', function ($rootScope, $http, $location) {
+	$rootScope.form = {};
+	var routes = {
+		'/': { class: 'home' },
+		'/thankyou': { class: 'thank-you' }
+	};
+	$rootScope.$on('$locationChangeSuccess', function () {
+		var
+			url = $location.url(),
+			state = routes[url];
+		if (state == null) {
+			state = { class: 'not-found' };
+			$location.url('/');
+		}
+		$rootScope.state = state;
+	});
+	$rootScope.reg = function (form) {
+		if (!(form && form.$valid)) return;
+		$http.get('http://webinar-brusnika.gr8.com/', { params: $rootScope.form }).finally(toThankYou);
+	}
+	function toThankYou() {
+		$location.url('/thankyou');
+	}
+}]);
 	</script>
 </body>
-
 </html>

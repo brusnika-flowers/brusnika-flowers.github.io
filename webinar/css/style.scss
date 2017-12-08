@@ -75,6 +75,9 @@ button {
 
 .brand {
 	@include f-pacifico-400;
+	span {
+		color: #ff5252;
+	}
 }
 
 
@@ -124,7 +127,7 @@ body {
 	z-index: 20;
 
 	background: {
-		image: url(../img/bg1.jpg);
+		image: url("https://multimedia.getresponse.com/getresponse-SQq9z/photos/490386106.jpg");
 		repeat: no-repeat;
 		position: center;
 		size: cover;
@@ -254,17 +257,20 @@ body {
 			}
 			&:nth-child(1) {
 				.img-wrap {
-					background-image: url(../img/b2-c1.jpg);
+					background-image: url("https://multimedia.getresponse.com/getresponse-SQq9z/photos/489386106.jpg");
+					background-position-y: 39%;
 				}
 			}
 			&:nth-child(2) {
 				.img-wrap {
-					background-image: url(../img/b2-c2.jpg);
+					background-image: url("https://multimedia.getresponse.com/getresponse-SQq9z/photos/489385706.jpg");
+					background-position-y: 10%;
 				}
 			}
 			&:nth-child(3) {
 				.img-wrap {
-					background-image: url(../img/b2-c3.jpg);
+					background-image: url("https://multimedia.getresponse.com/getresponse-SQq9z/photos/489386006.jpg");
+					background-position-y: 44%;
 				}
 			}
 
@@ -304,19 +310,19 @@ body {
 			}
 			&:nth-child(1) {
 				.img-wrap {
-					background-image: url(../img/b3-c1.jpg);
+					background-image: url("https://multimedia.getresponse.com/getresponse-SQq9z/photos/489391006.jpg");
 					background-position-y: 30%;
 				}
 			}
 			&:nth-child(2) {
 				.img-wrap {
-					background-image: url(../img/b3-c2.jpg);
+					background-image: url("https://multimedia.getresponse.com/getresponse-SQq9z/photos/489390906.jpg");
 					background-position-y: 10%;
 				}
 			}
 			&:nth-child(3) {
 				.img-wrap {
-					background-image: url(../img/b3-c3.jpg);
+					background-image: url("https://multimedia.getresponse.com/getresponse-SQq9z/photos/489391206.jpg");
 					background-position-y: 45%;
 				}
 			}
