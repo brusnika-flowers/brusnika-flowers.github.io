@@ -20,7 +20,6 @@
 	window.dataLayer = window.dataLayer || [];
 	function gtag() { dataLayer.push(arguments); }
 	gtag('js', new Date());
-
 	gtag('config', 'UA-111458540-1');
 </script>
 <script type="text/javascript">(window.Image ? (new Image()) : document.createElement('img')).src = 'https://vk.com/rtrg?p=VK-RTRG-199394-7W7ek';</script>
@@ -44,7 +43,7 @@
 				<div class="head-2">
 					Заполните форму и получите приглашение на вебинар
 				</div>
-				<form name="RegForm1" ng-submit="reg(RegForm1)">
+				<form name="RegForm1" ng-submit="reg(RegForm1)" form-watch>
 					<div>
 						<input required="" type="text" placeholder="Имя" name="name" autocomplete="off" ng-model="form.name">
 					</div>
@@ -106,7 +105,7 @@
 	<div class="b4">
 		<div class="container-2">
 			<div class="head-1">Не забудьте зарегистрироваться</div>
-			<form name="RegForm2" ng-submit="reg(RegForm2)">
+			<form name="RegForm2" ng-submit="reg(RegForm2)" form-watch>
 				<div>
 					<input required="" type="text" placeholder="Имя" name="name" autocomplete="off" ng-model="form.name">
 				</div>
@@ -139,6 +138,23 @@ window.onload = function () {
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
 	<script>
 angular.module('App', [])
+.directive('formWatch',function(){
+	return {
+		restrict: 'A',
+		require: 'form',
+		link: function(s,e,a,c){
+			var sended=false;
+			s.$watch(c.$name+'.$pristine',function(p){
+				if(p===false && !sended){
+					sended=true;
+					try{
+						VK.Retargeting.Event('webinar-form-fill-'+c.$name);
+					}catch(err){}
+				}
+			});
+		}
+	};
+})
 .config(['$locationProvider', function ($locationProvider) {
 	$locationProvider.hashPrefix('');
 }])
@@ -159,13 +175,34 @@ angular.module('App', [])
 		$rootScope.state = state;
 	});
 	$rootScope.reg = function (form) {
-		if (!(form && form.$valid)) return;
-		$http.get('http://webinar-brusnika.gr8.com/', { params: $rootScope.form }).finally(toThankYou);
-	}
+		if (form && form.$valid) {
+			$http.get('http://webinar-brusnika.gr8.com/', { params: $rootScope.form }).finally(toThankYou);
+			try {
+				VK.Retargeting.Event('webinar-reg');
+			} catch (err) { }
+		} else {
+			try {
+				VK.Retargeting.Event('webinar-reg-invalid');
+			} catch (err) { }
+		}
+	};
 	function toThankYou() {
 		$location.url('/thankyou');
 	}
 }]);
+	</script>
+	<div id="vk_api_transport"></div>
+	<script type="text/javascript">
+		window.vkAsyncInit = function () {
+			VK.Retargeting.Init('VK-RTRG-199394-7W7ek');
+		};
+		setTimeout(function () {
+			var el = document.createElement("script");
+			el.type = "text/javascript";
+			el.src = "https://vk.com/js/api/openapi.js?151";
+			el.async = true;
+			document.getElementById("vk_api_transport").appendChild(el);
+		}, 0);
 	</script>
 </body>
 </html>
