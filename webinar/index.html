@@ -22,6 +22,19 @@
 	gtag('js', new Date());
 	gtag('config', 'UA-111458540-1');
 </script>
+<script>
+	!function (f, b, e, v, n, t, s) {
+		if (f.fbq) return; n = f.fbq = function () {
+			n.callMethod ?
+				n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+		}; if (!f._fbq) f._fbq = n;
+		n.push = n; n.loaded = !0; n.version = '2.0'; n.queue = []; t = b.createElement(e); t.async = !0;
+		t.src = v; s = b.getElementsByTagName(e)[0]; s.parentNode.insertBefore(t, s)
+	}(window, document, 'script', 'https://connect.facebook.net/en_US/fbevents.js');
+	fbq('init', '139852890063676');
+	fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=139852890063676&ev=PageView&noscript=1"/></noscript>
 <script type="text/javascript">(window.Image ? (new Image()) : document.createElement('img')).src = 'https://vk.com/rtrg?p=VK-RTRG-199394-7W7ek';</script>
 </head>
 <body ng-app="App" ng-class="state.class" class="ng-cloak">
@@ -148,6 +161,15 @@ angular.module('App', [])
 				if(p===false && !sended){
 					sended=true;
 					try{
+						fbq('track', 'InitiateCheckout');
+					}catch(err){}
+					try{
+						fbq('track', 'webinar-form-fill-' + c.$name);
+					}catch(err){}
+					try{
+						gtag('event', 'webinar-form-fill-' + form.$name);
+					}catch(err){}
+					try{
 						VK.Retargeting.Event('webinar-form-fill-'+c.$name);
 					}catch(err){}
 				}
@@ -177,13 +199,31 @@ angular.module('App', [])
 	$rootScope.reg = function (form) {
 		if (form && form.$valid) {
 			$http.get('http://webinar-brusnika.gr8.com/', { params: $rootScope.form }).finally(toThankYou);
+			try{
+				fbq('track', 'CompleteRegistration');
+			}catch(err){}
+			try {
+				fbq('track', 'webinar-reg-'+form.$name);
+			}catch(err){}
+			try{
+				gtag('event','webinar-reg');
+			}catch(err){}
+			try{
+				gtag('event', 'webinar-reg-'+form.$name);
+			}catch(err){}
 			try {
 				VK.Retargeting.Event('webinar-reg');
-			} catch (err) { }
+			}catch(err){}
+			try {
+				VK.Retargeting.Event('webinar-reg-'+form.$name);
+			}catch(err){}
 		} else {
+			try{
+				gtag('event', 'webinar-reg-invalid');
+			}catch(err){}
 			try {
 				VK.Retargeting.Event('webinar-reg-invalid');
-			} catch (err) { }
+			}catch(err){}
 		}
 	};
 	function toThankYou() {
