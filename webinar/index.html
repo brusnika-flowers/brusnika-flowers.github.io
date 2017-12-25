@@ -198,7 +198,7 @@ angular.module('App', [])
 	});
 	$rootScope.reg = function (form) {
 		if (form && form.$valid) {
-			$http.get('http://webinar-brusnika.gr8.com/', { params: $rootScope.form }).finally(toThankYou);
+			$http.get('http://web-brusnika.gr8.com/', { params: $rootScope.form }).finally(toThankYou);
 			try{
 				fbq('track', 'CompleteRegistration');
 			}catch(err){}
