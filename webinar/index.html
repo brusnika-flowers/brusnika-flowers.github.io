@@ -164,10 +164,10 @@ angular.module('App', [])
 						fbq('track', 'InitiateCheckout');
 					}catch(err){}
 					try{
-						fbq('track', 'webinar-form-fill-' + c.$name);
+						fbq('trackCustom', 'webinar-form-fill-' + c.$name);
 					}catch(err){}
 					try{
-						gtag('event', 'webinar-form-fill-' + form.$name);
+						gtag('event', 'webinar-form-fill-' + c.$name);
 					}catch(err){}
 					try{
 						VK.Retargeting.Event('webinar-form-fill-'+c.$name);
@@ -200,10 +200,10 @@ angular.module('App', [])
 		if (form && form.$valid) {
 			$http.get('http://web-brusnika.gr8.com/', { params: $rootScope.form }).finally(toThankYou);
 			try{
-				fbq('track', 'CompleteRegistration');
+				fbq('track', 'CompleteRegistration',{ name: $rootScope.form.name, email: $rootScope.form.email });
 			}catch(err){}
 			try {
-				fbq('track', 'webinar-reg-'+form.$name);
+				fbq('trackCustom', 'webinar-reg-'+form.$name);
 			}catch(err){}
 			try{
 				gtag('event','webinar-reg');
